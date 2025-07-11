@@ -1,0 +1,13 @@
+/* src/components/Skills.css */
+.skills {
+    padding: 20px;
+}
+
+.skill-category {
+    margin-bottom: 20px;
+}
+
+.skills ul {
+    list-style-type: none;
+    padding: 0;
+}
