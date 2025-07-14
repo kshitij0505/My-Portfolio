@@ -397,13 +397,15 @@ const Header = () => {
         },
         // Projects Section - 3 Cards per row
         projectsGrid: {
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '24px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '48px',
             maxWidth: '1200px',
             margin: '0 auto',
             padding: '0 24px'
         },
+        
+        // Purane projectCard style ko replace kariye:
         projectCard: {
             backgroundColor: 'rgba(255, 255, 255, 0.05)',
             backdropFilter: 'blur(20px)',
@@ -416,7 +418,18 @@ const Header = () => {
             overflow: 'hidden',
             transform: 'translateY(20px)',
             opacity: 0,
-            animation: 'fadeInUp 0.8s ease-out forwards'
+            animation: 'fadeInUp 0.8s ease-out forwards',
+            width: '45%',
+            maxWidth: '500px'
+        },
+        
+        // Naye styles add kariye:
+        projectLeft: {
+            alignSelf: 'flex-start'
+        },
+        
+        projectRight: {
+            alignSelf: 'flex-end'
         },
         projectTitle: {
             fontSize: '1.3rem',
@@ -653,9 +666,14 @@ const Header = () => {
             .skills-grid {
                 grid-template-columns: 1fr !important;
             }
-            .projects-grid {
-                grid-template-columns: 1fr !important;
-            }
+             .projects-grid {
+        align-items: center !important;
+    }
+    .project-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        align-self: center !important;
+    }
             .hero-content {
                 flex-direction: column !important;
                 text-align: center !important;
@@ -803,42 +821,50 @@ const Header = () => {
 
             {/* Projects Section */}
             <section id="projects" style={styles.section}>
-                <h2 style={styles.sectionTitle}>Projects</h2>
-                <div style={styles.projectsGrid} className="projects-grid">
-                    <div className="project-card" style={{ ...styles.projectCard, animationDelay: '0s' }}>
-                        <div style={styles.projectBadge}>Frontend</div>
-                        <h3 style={styles.projectTitle}>Maharashtra University Health And Science (MUHS) Website</h3>
-                        <p style={styles.projectDescription}>
-                            A comprehensive university website showcasing programs, faculty, and student resources with modern design and seamless user experience.
-                        </p>
-                        <div style={styles.skillTags}>
-                            <span style={styles.skillTag}>React.js</span>
-                            <span style={styles.skillTag}>CSS</span>
-                            <span style={styles.skillTag}>Framer Motion</span>
-                            <span style={styles.skillTag}>Card</span>
-                            <span style={styles.skillTag}>PDF Viewer</span>
-                            <span style={styles.skillTag}>Video Streaming</span>
-                        </div>
-                    </div>
+    <h2 style={styles.sectionTitle}>Projects</h2>
+    <div style={styles.projectsGrid} className="projects-grid">
+        <div className="project-card" style={{ 
+            ...styles.projectCard, 
+            ...styles.projectLeft,
+            animationDelay: '0s' 
+        }}>
+            <div style={styles.projectBadge}>Frontend</div>
+            <h3 style={styles.projectTitle}>Maharashtra University Health And Science (MUHS) Website</h3>
+            <p style={styles.projectDescription}>
+                A comprehensive university website showcasing programs, faculty, and student resources with modern design and seamless user experience.
+            </p>
+            <div style={styles.skillTags}>
+                <span style={styles.skillTag}>React.js</span>
+                <span style={styles.skillTag}>CSS</span>
+                <span style={styles.skillTag}>Framer Motion</span>
+                <span style={styles.skillTag}>Card</span>
+                <span style={styles.skillTag}>PDF Viewer</span>
+                <span style={styles.skillTag}>Video Streaming</span>
+            </div>
+        </div>
 
-                    <div className="project-card" style={{ ...styles.projectCard, animationDelay: '0.2s' }}>
-                        <div style={styles.projectBadge}>Full Stack</div>
-                        <h3 style={styles.projectTitle}>Automation Maharashtra University Health And Science (MUHS)</h3>
-                        <p style={styles.projectDescription}>
-                            This project was developed for Maharashtra University of Health Sciences (MUHS) to automate various administrative workflows including student data management, faculty records, and examination processes.
-                        </p>
-                        <div style={styles.skillTags}>
-                            <span style={styles.skillTag}>Java</span>
-                            <span style={styles.skillTag}>Spring Boot</span>
-                            <span style={styles.skillTag}>Micro-Services</span>
-                            <span style={styles.skillTag}>PostgreSQL</span>
-                            <span style={styles.skillTag}>React</span>
-                            <span style={styles.skillTag}>HTML</span>
-                            <span style={styles.skillTag}>CSS</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <div className="project-card" style={{ 
+            ...styles.projectCard, 
+            ...styles.projectRight,
+            animationDelay: '0.2s' 
+        }}>
+            <div style={styles.projectBadge}>Full Stack</div>
+            <h3 style={styles.projectTitle}>Automation Maharashtra University Health And Science (MUHS)</h3>
+            <p style={styles.projectDescription}>
+                This project was developed for Maharashtra University of Health Sciences (MUHS) to automate various administrative workflows including student data management, faculty records, and examination processes.
+            </p>
+            <div style={styles.skillTags}>
+                <span style={styles.skillTag}>Java</span>
+                <span style={styles.skillTag}>Spring Boot</span>
+                <span style={styles.skillTag}>Micro-Services</span>
+                <span style={styles.skillTag}>PostgreSQL</span>
+                <span style={styles.skillTag}>React</span>
+                <span style={styles.skillTag}>HTML</span>
+                <span style={styles.skillTag}>CSS</span>
+            </div>
+        </div>
+    </div>
+</section>
 
             {/* Experience Section */}
             <section id="experience" style={styles.section}>
