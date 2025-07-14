@@ -837,21 +837,6 @@ const Header = () => {
                             <span style={styles.skillTag}>CSS</span>
                         </div>
                     </div>
-
-                    {/* Adding a third project to complete the 3-card layout */}
-                    <div className="project-card" style={{ ...styles.projectCard, animationDelay: '0.4s' }}>
-                        <div style={styles.projectBadge}>Backend</div>
-                        <h3 style={styles.projectTitle}>API Management System</h3>
-                        <p style={styles.projectDescription}>
-                            A robust API management system with authentication, authorization, and real-time monitoring capabilities.
-                        </p>
-                        <div style={styles.skillTags}>
-                            <span style={styles.skillTag}>Spring Boot</span>
-                            <span style={styles.skillTag}>JWT</span>
-                            <span style={styles.skillTag}>PostgreSQL</span>
-                            <span style={styles.skillTag}>Docker</span>
-                        </div>
-                    </div>
                 </div>
             </section>
 
@@ -899,7 +884,7 @@ const Header = () => {
                         </div>
                         <div style={styles.contactInfo}>
                             <span style={{ color: '#00ff87', fontSize: '1.5rem' }}>📱</span>
-                            <span>+91 0560578771</span>
+                            <span>+91 9560578771</span>
                         </div>
                         <button
                             className="primary-button"
