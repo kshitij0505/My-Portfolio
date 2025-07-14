@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 
 // Import your image
@@ -9,10 +8,11 @@ const Header = () => {
     const [displayedText, setDisplayedText] = useState('');
     const [displayedSubtitle, setDisplayedSubtitle] = useState('');
     const [isTyping, setIsTyping] = useState(true);
+    const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
     const [bubbles, setBubbles] = useState([]);
 
     const name = "Kshitij";
-    const subtitle = "Frontend Developer ";
+    const titles = ["Frontend Developer", "Web Developer", "Project Engineer"];
 
     // Generate random bubbles with better visibility
     useEffect(() => {
@@ -48,32 +48,78 @@ const Header = () => {
         return () => clearInterval(bubbleInterval);
     }, []);
 
-    // Typewriter effect for name
+    // Typewriter effect for name and rotating titles
     useEffect(() => {
-        let i = 0;
-        const timer = setInterval(() => {
-            if (i < name.length) {
-                setDisplayedText(name.slice(0, i + 1));
-                i++;
+        let nameIndex = 0;
+        const typeNameTimer = setInterval(() => {
+            if (nameIndex < name.length) {
+                setDisplayedText(name.slice(0, nameIndex + 1));
+                nameIndex++;
             } else {
-                clearInterval(timer);
+                clearInterval(typeNameTimer);
+                
+                // Start typing the first title after name is complete
                 setTimeout(() => {
-                    let j = 0;
-                    const subtitleTimer = setInterval(() => {
-                        if (j < subtitle.length) {
-                            setDisplayedSubtitle(subtitle.slice(0, j + 1));
-                            j++;
-                        } else {
-                            clearInterval(subtitleTimer);
-                            setIsTyping(false);
-                        }
-                    }, 100);
+                    startTitleRotation();
                 }, 500);
             }
         }, 150);
 
-        return () => clearInterval(timer);
+        return () => clearInterval(typeNameTimer);
     }, []);
+
+    const startTitleRotation = () => {
+        const typeTitle = (titleIndex) => {
+            const currentTitle = titles[titleIndex];
+            let charIndex = 0;
+            
+            // Clear previous title
+            setDisplayedSubtitle('');
+            setIsTyping(true);
+            
+            const typeTimer = setInterval(() => {
+                if (charIndex < currentTitle.length) {
+                    setDisplayedSubtitle(currentTitle.slice(0, charIndex + 1));
+                    charIndex++;
+                } else {
+                    clearInterval(typeTimer);
+                    setIsTyping(false);
+                    
+                    // Wait 2 seconds before starting to delete
+                    setTimeout(() => {
+                        deleteTitle(titleIndex);
+                    }, 2000);
+                }
+            }, 100);
+        };
+
+        const deleteTitle = (titleIndex) => {
+            const currentTitle = titles[titleIndex];
+            let charIndex = currentTitle.length;
+            setIsTyping(true);
+            
+            const deleteTimer = setInterval(() => {
+                if (charIndex > 0) {
+                    setDisplayedSubtitle(currentTitle.slice(0, charIndex - 1));
+                    charIndex--;
+                } else {
+                    clearInterval(deleteTimer);
+                    
+                    // Move to next title
+                    const nextIndex = (titleIndex + 1) % titles.length;
+                    setCurrentTitleIndex(nextIndex);
+                    
+                    // Wait a bit before typing next title
+                    setTimeout(() => {
+                        typeTitle(nextIndex);
+                    }, 300);
+                }
+            }, 50);
+        };
+
+        // Start with the first title
+        typeTitle(0);
+    };
 
     const scrollToSection = (sectionId) => {
         setActiveSection(sectionId);
@@ -694,9 +740,7 @@ const Header = () => {
                         </h1>
                         <h2 style={styles.heroSubtitle}>
                             {displayedSubtitle}
-                            {displayedSubtitle.length > 0 && displayedSubtitle.length < subtitle.length && (
-                                <span style={styles.subtitleCursor}></span>
-                            )}
+                            <span style={styles.subtitleCursor}></span>
                         </h2>
                         <p style={styles.heroDescription}>
                             I'm a passionate software developer who loves building modern, scalable applications.
