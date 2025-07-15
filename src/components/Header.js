@@ -57,7 +57,7 @@ const Header = () => {
                 nameIndex++;
             } else {
                 clearInterval(typeNameTimer);
-                
+
                 // Start typing the first title after name is complete
                 setTimeout(() => {
                     startTitleRotation();
@@ -72,11 +72,11 @@ const Header = () => {
         const typeTitle = (titleIndex) => {
             const currentTitle = titles[titleIndex];
             let charIndex = 0;
-            
+
             // Clear previous title
             setDisplayedSubtitle('');
             setIsTyping(true);
-            
+
             const typeTimer = setInterval(() => {
                 if (charIndex < currentTitle.length) {
                     setDisplayedSubtitle(currentTitle.slice(0, charIndex + 1));
@@ -84,7 +84,7 @@ const Header = () => {
                 } else {
                     clearInterval(typeTimer);
                     setIsTyping(false);
-                    
+
                     // Wait 2 seconds before starting to delete
                     setTimeout(() => {
                         deleteTitle(titleIndex);
@@ -97,18 +97,18 @@ const Header = () => {
             const currentTitle = titles[titleIndex];
             let charIndex = currentTitle.length;
             setIsTyping(true);
-            
+
             const deleteTimer = setInterval(() => {
                 if (charIndex > 0) {
                     setDisplayedSubtitle(currentTitle.slice(0, charIndex - 1));
                     charIndex--;
                 } else {
                     clearInterval(deleteTimer);
-                    
+
                     // Move to next title
                     const nextIndex = (titleIndex + 1) % titles.length;
                     setCurrentTitleIndex(nextIndex);
-                    
+
                     // Wait a bit before typing next title
                     setTimeout(() => {
                         typeTitle(nextIndex);
@@ -147,23 +147,23 @@ const Header = () => {
             {/* Network nodes pattern */}
             <svg width="35" height="35" viewBox="0 0 35 35" fill="none">
                 {/* Main central circle */}
-                <circle cx="17.5" cy="17.5" r="3" fill="white" opacity="0.9"/>
-                
+                <circle cx="17.5" cy="17.5" r="3" fill="white" opacity="0.9" />
+
                 {/* Surrounding circles */}
-                <circle cx="8" cy="8" r="2" fill="white" opacity="0.7"/>
-                <circle cx="27" cy="8" r="2" fill="white" opacity="0.7"/>
-                <circle cx="8" cy="27" r="2" fill="white" opacity="0.7"/>
-                <circle cx="27" cy="27" r="2" fill="white" opacity="0.7"/>
-                <circle cx="17.5" cy="6" r="1.5" fill="white" opacity="0.6"/>
-                <circle cx="17.5" cy="29" r="1.5" fill="white" opacity="0.6"/>
-                
+                <circle cx="8" cy="8" r="2" fill="white" opacity="0.7" />
+                <circle cx="27" cy="8" r="2" fill="white" opacity="0.7" />
+                <circle cx="8" cy="27" r="2" fill="white" opacity="0.7" />
+                <circle cx="27" cy="27" r="2" fill="white" opacity="0.7" />
+                <circle cx="17.5" cy="6" r="1.5" fill="white" opacity="0.6" />
+                <circle cx="17.5" cy="29" r="1.5" fill="white" opacity="0.6" />
+
                 {/* Connection lines */}
-                <line x1="8" y1="8" x2="17.5" y2="17.5" stroke="white" strokeWidth="1.5" opacity="0.5"/>
-                <line x1="27" y1="8" x2="17.5" y2="17.5" stroke="white" strokeWidth="1.5" opacity="0.5"/>
-                <line x1="8" y1="27" x2="17.5" y2="17.5" stroke="white" strokeWidth="1.5" opacity="0.5"/>
-                <line x1="27" y1="27" x2="17.5" y2="17.5" stroke="white" strokeWidth="1.5" opacity="0.5"/>
-                <line x1="17.5" y1="6" x2="17.5" y2="17.5" stroke="white" strokeWidth="1.5" opacity="0.5"/>
-                <line x1="17.5" y1="29" x2="17.5" y2="17.5" stroke="white" strokeWidth="1.5" opacity="0.5"/>
+                <line x1="8" y1="8" x2="17.5" y2="17.5" stroke="white" strokeWidth="1.5" opacity="0.5" />
+                <line x1="27" y1="8" x2="17.5" y2="17.5" stroke="white" strokeWidth="1.5" opacity="0.5" />
+                <line x1="8" y1="27" x2="17.5" y2="17.5" stroke="white" strokeWidth="1.5" opacity="0.5" />
+                <line x1="27" y1="27" x2="17.5" y2="17.5" stroke="white" strokeWidth="1.5" opacity="0.5" />
+                <line x1="17.5" y1="6" x2="17.5" y2="17.5" stroke="white" strokeWidth="1.5" opacity="0.5" />
+                <line x1="17.5" y1="29" x2="17.5" y2="17.5" stroke="white" strokeWidth="1.5" opacity="0.5" />
             </svg>
         </div>
     );
@@ -404,7 +404,7 @@ const Header = () => {
             margin: '0 auto',
             padding: '0 24px'
         },
-        
+
         // Purane projectCard style ko replace kariye:
         projectCard: {
             backgroundColor: 'rgba(255, 255, 255, 0.05)',
@@ -422,12 +422,12 @@ const Header = () => {
             width: '45%',
             maxWidth: '500px'
         },
-        
+
         // Naye styles add kariye:
         projectLeft: {
             alignSelf: 'flex-start'
         },
-        
+
         projectRight: {
             alignSelf: 'flex-end'
         },
@@ -821,50 +821,50 @@ const Header = () => {
 
             {/* Projects Section */}
             <section id="projects" style={styles.section}>
-    <h2 style={styles.sectionTitle}>Projects</h2>
-    <div style={styles.projectsGrid} className="projects-grid">
-        <div className="project-card" style={{ 
-            ...styles.projectCard, 
-            ...styles.projectLeft,
-            animationDelay: '0s' 
-        }}>
-            <div style={styles.projectBadge}>Frontend</div>
-            <h3 style={styles.projectTitle}>Maharashtra University Health And Science (MUHS) Website</h3>
-            <p style={styles.projectDescription}>
-                A comprehensive university website showcasing programs, faculty, and student resources with modern design and seamless user experience.
-            </p>
-            <div style={styles.skillTags}>
-                <span style={styles.skillTag}>React.js</span>
-                <span style={styles.skillTag}>CSS</span>
-                <span style={styles.skillTag}>Framer Motion</span>
-                <span style={styles.skillTag}>Card</span>
-                <span style={styles.skillTag}>PDF Viewer</span>
-                <span style={styles.skillTag}>Video Streaming</span>
-            </div>
-        </div>
+                <h2 style={styles.sectionTitle}>Projects</h2>
+                <div style={styles.projectsGrid} className="projects-grid">
+                    <div className="project-card" style={{
+                        ...styles.projectCard,
+                        ...styles.projectLeft,
+                        animationDelay: '0s'
+                    }}>
+                        <div style={styles.projectBadge}>Frontend</div>
+                        <h3 style={styles.projectTitle}>Maharashtra University Health And Science (MUHS) Website</h3>
+                        <p style={styles.projectDescription}>
+                            A comprehensive university website showcasing programs, faculty, and student resources with modern design and seamless user experience.
+                        </p>
+                        <div style={styles.skillTags}>
+                            <span style={styles.skillTag}>React.js</span>
+                            <span style={styles.skillTag}>CSS</span>
+                            <span style={styles.skillTag}>Framer Motion</span>
+                            <span style={styles.skillTag}>Card</span>
+                            <span style={styles.skillTag}>PDF Viewer</span>
+                            <span style={styles.skillTag}>Video Streaming</span>
+                        </div>
+                    </div>
 
-        <div className="project-card" style={{ 
-            ...styles.projectCard, 
-            ...styles.projectRight,
-            animationDelay: '0.2s' 
-        }}>
-            <div style={styles.projectBadge}>Full Stack</div>
-            <h3 style={styles.projectTitle}>Automation Maharashtra University Health And Science (MUHS)</h3>
-            <p style={styles.projectDescription}>
-                This project was developed for Maharashtra University of Health Sciences (MUHS) to automate various administrative workflows including student data management, faculty records, and examination processes.
-            </p>
-            <div style={styles.skillTags}>
-                <span style={styles.skillTag}>Java</span>
-                <span style={styles.skillTag}>Spring Boot</span>
-                <span style={styles.skillTag}>Micro-Services</span>
-                <span style={styles.skillTag}>PostgreSQL</span>
-                <span style={styles.skillTag}>React</span>
-                <span style={styles.skillTag}>HTML</span>
-                <span style={styles.skillTag}>CSS</span>
-            </div>
-        </div>
-    </div>
-</section>
+                    <div className="project-card" style={{
+                        ...styles.projectCard,
+                        ...styles.projectRight,
+                        animationDelay: '0.2s'
+                    }}>
+                        <div style={styles.projectBadge}>Full Stack</div>
+                        <h3 style={styles.projectTitle}>Automation Maharashtra University Health And Science (MUHS)</h3>
+                        <p style={styles.projectDescription}>
+                            This project was developed for Maharashtra University of Health Sciences (MUHS) to automate various administrative workflows including student data management, faculty records, and examination processes.
+                        </p>
+                        <div style={styles.skillTags}>
+                            <span style={styles.skillTag}>Java</span>
+                            <span style={styles.skillTag}>Spring Boot</span>
+                            <span style={styles.skillTag}>Micro-Services</span>
+                            <span style={styles.skillTag}>PostgreSQL</span>
+                            <span style={styles.skillTag}>React</span>
+                            <span style={styles.skillTag}>HTML</span>
+                            <span style={styles.skillTag}>CSS</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* Experience Section */}
             <section id="experience" style={styles.section}>
